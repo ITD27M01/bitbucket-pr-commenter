@@ -19,7 +19,7 @@ def _construct_url(server, project, repo, pr):
               f"rest/api/latest/" \
               f"projects/{project}/" \
               f"repos/{repo}/" \
-              f"pull-requests/{pr}/comments"
+              f"pull-requests/{pr_number_match.groups()[1]}/comments"
 
         _log.debug(f"Construct url: {url}")
         return url
