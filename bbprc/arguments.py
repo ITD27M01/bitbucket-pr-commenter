@@ -4,7 +4,7 @@ import argparse
 def args_parser():
     parser = argparse.ArgumentParser(description='Sends comment to BitBucket Pull Request')
     parser.add_argument('--server', type=str, action='store',
-                        help='BitBucket server name or address')
+                        help='BitBucket server address or url')
 
     parser.add_argument('--token', type=str, action='store',
                         help='BitBucket Bearer token for authorization')
