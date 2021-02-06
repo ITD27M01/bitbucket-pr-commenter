@@ -1,5 +1,6 @@
 import requests
 import logging
+from urllib3.util import parse_url
 from urllib3 import disable_warnings as disable_urllib3_warnings
 from urllib3 import exceptions as urllib3_exceptions
 from re import match, compile
@@ -7,15 +8,20 @@ from re import match, compile
 
 _log = logging.getLogger(name=__name__)
 
-SCHEME = 'https'
+DEFAULT_SCHEME = 'https'
 DEFAULT_GREETING = "I know you're working hard. I have some results, what do you think of them?"
 PR_PATTERN = compile('(pull-requests)?\/?([0-9]+)\/?(from)?')
 
 
 def _construct_url(server, project, repo, pr):
+    scheme = DEFAULT_SCHEME
+    server_url = parse_url(server)
+    if server_url.scheme:
+        scheme = server_url.scheme
+
     pr_number_match = match(PR_PATTERN, pr)
     if pr_number_match and pr_number_match.groups()[1]:
-        url = f"{SCHEME}://{server}/" \
+        url = f"{scheme}://{server_url.host}/" \
               f"rest/api/latest/" \
               f"projects/{project}/" \
               f"repos/{repo}/" \

@@ -12,7 +12,7 @@ Sends comment to BitBucket Pull Request
 
 optional arguments:
   -h, --help           show this help message and exit
-  --server SERVER      BitBucket server name or address
+  --server SERVER      BitBucket server address or url
   --token TOKEN        BitBucket Bearer token for authorization
   --project PROJECT    BitBucket project name
   --repo REPO          BitBucket repository name
