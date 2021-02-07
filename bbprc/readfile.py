@@ -8,6 +8,7 @@ MAX_TEXT_SIZE = 16384
 
 def _get_content(file, size=MAX_TEXT_SIZE):
     with open(file, 'r') as fd:
+        _log.debug(f"Try to read {file} content")
         content = fd.read(size)
 
     text = ""
