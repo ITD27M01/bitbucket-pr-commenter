@@ -1,5 +1,6 @@
 import requests
 import logging
+from bbprc.readfile import read_file
 from urllib3.util import parse_url
 from urllib3 import disable_warnings as disable_urllib3_warnings
 from urllib3 import exceptions as urllib3_exceptions
@@ -42,13 +43,7 @@ def _make_data(greeting, file):
     }
 
     if file:
-        with open(file, 'r') as fd:
-            lines = fd.read()
-
-        if lines:
-            data["text"] += "```text\n"
-            data["text"] += lines
-            data["text"] += "\n```"
+        data["text"] += read_file(file)
 
     return data
 
