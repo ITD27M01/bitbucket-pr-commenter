@@ -4,6 +4,9 @@ from os import stat
 _log = logging.getLogger(name=__name__)
 
 MAX_TEXT_SIZE = 16384
+HEADER = "```text\n"
+FOOTER = "\n```"
+TRUNCATE_COMMENT = "\n<...> Some lines were truncated <...>"
 
 
 def _get_content(file, size=MAX_TEXT_SIZE):
@@ -13,13 +16,13 @@ def _get_content(file, size=MAX_TEXT_SIZE):
 
     text = ""
     if content:
-        text += "```text\n"
+        text += HEADER
         text += content
 
         if stat(file).st_size > size:
-            text += "\n<...> Some lines were truncated <...>"
+            text += TRUNCATE_COMMENT
 
-        text += "\n```"
+        text += FOOTER
 
     return text
 
