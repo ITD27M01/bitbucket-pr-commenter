@@ -3,7 +3,7 @@ from os import stat
 
 _log = logging.getLogger(name=__name__)
 
-MAX_TEXT_SIZE = 16384
+MAX_TEXT_SIZE = 32768
 HEADER = "```text\n"
 FOOTER = "\n```"
 TRUNCATE_COMMENT = "\n<...> Some lines were truncated <...>"
