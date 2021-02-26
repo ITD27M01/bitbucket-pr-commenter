@@ -3,7 +3,8 @@ from os import stat
 
 _log = logging.getLogger(name=__name__)
 
-MAX_TEXT_SIZE = 32768
+# NOTE(igortiunov): Size is dictated by max comment size on BB plus truncate comment
+MAX_TEXT_SIZE = 32728
 HEADER = "```text\n"
 FOOTER = "\n```"
 TRUNCATE_COMMENT = "\n<...> Some lines were truncated <...>"
