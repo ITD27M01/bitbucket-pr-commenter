@@ -43,7 +43,7 @@ def _make_data(greeting, file):
     }
 
     if file:
-        data["text"] += read_file(file)
+        data["text"] += read_file(file, comment_greeting)
 
     return data
 
