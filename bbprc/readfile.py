@@ -10,9 +10,7 @@ TRUNCATE_COMMENT = "\n<...> Some lines were truncated <...>"
 
 
 def _get_string_size(string: str) -> int:
-    size = len(string.encode('utf-8'))
-
-    return size
+    return len(string.encode('utf-8'))
 
 
 def _get_content(file, size):
@@ -35,10 +33,13 @@ def _get_content(file, size):
 
         text += FOOTER
 
+    _log.debug(f"Text size is {_get_string_size(text)} bytes")
+
     return text
 
 
 def read_file(file, greeting):
     greeting_size = _get_string_size(greeting)
 
+    _log.debug(f"Greeting size is {greeting_size} bytes")
     return _get_content(file, size=MAX_TEXT_SIZE - greeting_size)
